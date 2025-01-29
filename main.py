@@ -76,7 +76,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     command_handlers = {
-        'run': lambda: run(args.script_name, args.args, dict(zip(args.kwargs[0][::2], args.kwargs[0][1::2]))),
+        'run': lambda: run(args.script_name, args.args or [], {} if not args.kwargs else dict(zip(args.kwargs[0][::2], args.kwargs[0][1::2]))),
         'new': lambda: new(args.script_name),
         'list': lambda: print(list_scripts())
     }
